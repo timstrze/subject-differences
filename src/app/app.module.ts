@@ -11,14 +11,25 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {HomeComponent} from './home/home.component';
+import {HttpClientModule} from '@angular/common/http';
+import {StockQuoteService} from './services/stock-quote.service';
+import {SubjectComponent} from './subject/subject.component';
+import {BehaviorSubjectComponent} from './behavior-subject/behavior-subject.component';
+import {ReplaySubjectComponent} from './replay-subject/replay-subject.component';
+import {AsyncSubjectComponent} from './async-subject/async-subject.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SubjectComponent,
+    BehaviorSubjectComponent,
+    ReplaySubjectComponent,
+    AsyncSubjectComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -28,7 +39,9 @@ import {HomeComponent} from './home/home.component';
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    StockQuoteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
