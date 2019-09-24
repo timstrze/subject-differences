@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
 import {StockQuoteService} from './services/stock-quote.service';
 
 @Component({
@@ -25,8 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.stockQuoteService.
-      testMe();
     this.getStockQuote();
   }
 

@@ -7,7 +7,7 @@ import {ReplaySubjectComponent} from './replay-subject/replay-subject.component'
 import {AsyncSubjectComponent} from './async-subject/async-subject.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/subject', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'subject', component: SubjectComponent },
   { path: 'behavior-subject', component: BehaviorSubjectComponent },

@@ -1,1 +1,30 @@
-<p>replay-subject works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>ReplaySubject</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="https://s3.amazonaws.com/coursetro/posts/149-full.png" alt="ReplaySubject">
+  <mat-card-content>
+    <p>
+      A ReplaySubject behaves “like” a BehaviorSubject just that it gives a flexibility to preserve /
+      replay / repeat “n” number of previously emitted values. It can take 2 parameters: the first parameter is
+      “how many latest emitted values should be preserved” for future subscriptions; the second parameter is “how long
+      (in milliseconds) should these latest values be valid”
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Favorite food" value="Sushi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Leave a comment"></textarea>
+      </mat-form-field>
+    </form>
+
+    <button mat-flat-button color="primary">Primary</button>
+
+  </mat-card-actions>
+</mat-card>
+
