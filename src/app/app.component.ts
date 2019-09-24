@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
 import {StockQuoteService} from './services/stock-quote.service';
+import {RandomNumberService} from "./services/random-number.service";
 
 @Component({
   selector: 'app-root',
@@ -16,15 +17,17 @@ export class AppComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public stockQuoteService: StockQuoteService) {
+  observable$: Observable<any>;
+
+  constructor(private breakpointObserver: BreakpointObserver, public randomNumberService: RandomNumberService) {
   }
 
-  getStockQuote() {
-    this.stockQuoteService.getStockQuote();
+  subscribeToNumber() {
+    this.observable$ = this.randomNumberService.observable$;
   }
 
   ngOnInit(): void {
-    this.getStockQuote();
+    this.subscribeToNumber();
   }
 
 }

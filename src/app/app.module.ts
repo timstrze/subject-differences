@@ -19,6 +19,7 @@ import {ReplaySubjectComponent} from './replay-subject/replay-subject.component'
 import {AsyncSubjectComponent} from './async-subject/async-subject.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {RandomNumberService} from "./services/random-number.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule
   ],
   providers: [
-    StockQuoteService
+    StockQuoteService,
+    RandomNumberService
   ],
   bootstrap: [AppComponent]
 })
