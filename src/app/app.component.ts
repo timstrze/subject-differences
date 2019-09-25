@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, ReplaySubject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
-import {StockQuoteService} from './services/stock-quote.service';
-import {RandomNumberService} from "./services/random-number.service";
+import {RandomNumberService} from './services/random-number.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   subscribeToNumber() {
-    this.observable$ = this.randomNumberService.observable$;
+    this.observable$ = this.randomNumberService.getRandomNumber$();
   }
 
   ngOnInit(): void {
