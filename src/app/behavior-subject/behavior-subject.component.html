@@ -1,3 +1,32 @@
-<p>
-  BehaviorSubject: A BehaviorSubject behaves like a normal Subject Observable but it has an extra feature, i.e. it preserves the last emitted value. That means if a value was emitted earlier from a BehaviorSubject and if a subscription was added after the value was emitted, then the subscription will give the last value that was emitted. The BehaviorSubject last value can be also retrieved using .value on the BehaviorSubject
-</p>
+<mat-card class="example-card" style="width: 600px;">
+  <mat-card-title>BehaviorSubject</mat-card-title>
+  <mat-card-content>
+    <p>
+      A BehaviorSubject behaves like a normal Subject Observable but it has an extra feature, i.e. it preserves the
+      last emitted value. That means if a value was emitted earlier from a BehaviorSubject and if a subscription
+      was added after the value was emitted, then the subscription will give the last value that was emitted.
+      The BehaviorSubject last value can be also retrieved using .value on the BehaviorSubject
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput
+               type="number"
+               name="addNumber"
+               placeholder="Add a Number"
+               value="1"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="addToNumber">
+      </mat-form-field>
+    </form>
+
+    <p>observable$ {{observable$ | async}}</p>
+
+    <button mat-flat-button color="primary" (click)="addToObservable(addToNumber)">Primary</button>
+
+  </mat-card-actions>
+</mat-card>
+
+

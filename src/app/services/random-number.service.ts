@@ -1,24 +1,22 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomNumberService {
 
+  behaviorSubject$ = new BehaviorSubject(3);
+
   constructor() {
+    this.behaviorSubject$.next(4);
+    this.behaviorSubject$.next(5);
+    this.behaviorSubject$.next(6);
+    this.behaviorSubject$.next(7);
   }
 
-  getRandomNumber$() {
-    return new Observable(subscriber => {
-      subscriber.next(1);
-      subscriber.next(2);
-      subscriber.next(3);
-      setTimeout(() => {
-        subscriber.next(4);
-        subscriber.complete();
-      }, 1000);
-    });
+  getBehaviorSubject() {
+    return this.behaviorSubject$;
   }
 
 }
