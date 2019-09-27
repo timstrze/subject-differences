@@ -37,4 +37,13 @@ describe('ReplaySubjectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('addToObservable', () => {
+    it('should call the observable with the value passed in', () => {
+      spyOn(component.observable$, 'next');
+      component.addToObservable(6);
+      expect(component.observable$.next).toHaveBeenCalled();
+      expect(component.observable$.next).toHaveBeenCalledWith(6);
+    });
+  });
 });

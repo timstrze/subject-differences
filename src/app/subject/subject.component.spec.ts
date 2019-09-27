@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SubjectComponent } from './subject.component';
+import {SubjectComponent} from './subject.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -14,7 +14,7 @@ describe('SubjectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubjectComponent ],
+      declarations: [SubjectComponent],
       imports: [
         NoopAnimationsModule,
         MatCardModule,
@@ -25,7 +25,7 @@ describe('SubjectComponent', () => {
         FormsModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -36,5 +36,14 @@ describe('SubjectComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('addToObservable', () => {
+    it('should call the observable with the value passed in', () => {
+      spyOn(component.observable$, 'next');
+      component.addToObservable(6);
+      expect(component.observable$.next).toHaveBeenCalled();
+      expect(component.observable$.next).toHaveBeenCalledWith(6);
+    });
   });
 });
