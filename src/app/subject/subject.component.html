@@ -8,6 +8,21 @@
       Old values emitted from the time of its creation up to its subscription are not preserved; only values
       emitted after its subscription can be captured.
     </p>
+
+    <pre>
+      <code>
+        OnInit()
+
+        this.subject$.next(1);
+        this.subject$.next(2);
+      </code>
+    </pre>
+
+    <p>
+      The Subject Observable was updated twice on creation with the following values: 1, and 2.
+      The Observable value in the template is undefined even though it has previous values. Subscribers to a Subject
+      Observable will only receive an update after the being subscribed to and Observable.next() is called.
+    </p>
   </mat-card-content>
   <mat-card-actions>
 
@@ -16,16 +31,15 @@
         <input matInput
                type="number"
                name="addNumber"
-               placeholder="Add a Number"
-               value="1"
+               placeholder="New Observable value"
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="addToNumber">
       </mat-form-field>
     </form>
 
-    <p>observable$ {{observable$ | async}}</p>
+    <button mat-flat-button color="primary" (click)="addToObservable(addToNumber)">Update Observable</button> <small><i> calls this.subject$.next({{addToNumber}})</i></small>
 
-    <button mat-flat-button color="primary" (click)="addToObservable(addToNumber)">Primary</button>
+    <p>Observable value: {{observable$ | async}}</p>
 
   </mat-card-actions>
 </mat-card>
