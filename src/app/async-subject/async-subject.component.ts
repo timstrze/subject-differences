@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AsyncSubject} from 'rxjs';
+import {RandomNumberService} from '../services/random-number.service';
 
 @Component({
   selector: 'app-async-subject',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsyncSubjectComponent implements OnInit {
 
-  constructor() { }
+  observable$: AsyncSubject<any>;
 
-  ngOnInit() {
+  addToNumber: number;
+
+  constructor(public randomNumberService: RandomNumberService) {
   }
 
+  subscribeToNumber() {
+    this.observable$ = this.randomNumberService.AsyncSubject();
+  }
+
+  ngOnInit(): void {
+    this.subscribeToNumber();
+  }
+
+  addToObservable(val: number) {
+    this.observable$.next(val);
+  }
+
+  completeObservable() {
+    this.observable$.complete();
+  }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Subject, ReplaySubject} from 'rxjs';
+import {BehaviorSubject, Subject, ReplaySubject, AsyncSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class RandomNumberService {
   behaviorSubject$ = new BehaviorSubject(3);
   replaySubject$ = new ReplaySubject(3);
   subject$ = new Subject();
+  asyncSubject$ = new AsyncSubject();
 
   constructor() {
     this.behaviorSubject$.next(4);
@@ -23,6 +24,8 @@ export class RandomNumberService {
 
     this.subject$.next(1);
     this.subject$.next(2);
+
+    this.asyncSubject$.next(1);
   }
 
   getBehaviorSubject() {
@@ -35,6 +38,10 @@ export class RandomNumberService {
 
   getReplaySubject() {
     return this.replaySubject$;
+  }
+
+  AsyncSubject() {
+    return this.asyncSubject$;
   }
 
 }
