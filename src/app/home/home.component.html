@@ -2,16 +2,12 @@
   <mat-card-title>Subject</mat-card-title>
   <mat-card-content>
     <p>
-      Subject: A Subject observable is used to immediately notify subscribers of updated values emitted by it.
-      It does not keep track of old values, i.e. if a Subject observable first emitted a value and was then later
-      subscribed to, then the subscriber will not get get that value. You can think of a Subject like a live
-      update / feed. Old values emitted from the time of its creation up to its subscription are not preserved;
-      only values emitted after its subscription can be captured.
+      A Subject observable is used to immediately notify subscribers of updated values emitted by it.
     </p>
   </mat-card-content>
   <mat-card-actions>
 
-    <button mat-button color="primary">Primary</button>
+    <button mat-button color="primary" [routerLink]="['/subject']">Example</button>
 
   </mat-card-actions>
 </mat-card>
@@ -21,14 +17,12 @@
   <mat-card-content>
     <p>
       A ReplaySubject behaves “like” a BehaviorSubject just that it gives a flexibility to preserve /
-      replay / repeat “n” number of previously emitted values. It can take 2 parameters: the first parameter is
-      “how many latest emitted values should be preserved” for future subscriptions; the second parameter is “how long
-      (in milliseconds) should these latest values be valid”
+      replay / repeat “n” number of previously emitted values.
     </p>
   </mat-card-content>
   <mat-card-actions>
 
-    <button mat-button color="primary">Primary</button>
+    <button mat-button color="primary" [routerLink]="['/replay-subject']">Example</button>
 
   </mat-card-actions>
 </mat-card>
@@ -39,14 +33,12 @@
   <mat-card-content>
     <p>
       A BehaviorSubject behaves like a normal Subject Observable but it has an extra feature, i.e. it preserves the
-      last emitted value. That means if a value was emitted earlier from a BehaviorSubject and if a subscription
-      was added after the value was emitted, then the subscription will give the last value that was emitted.
-      The BehaviorSubject last value can be also retrieved using .value on the BehaviorSubject
+      last emitted value.
     </p>
   </mat-card-content>
   <mat-card-actions>
 
-    <button mat-button color="primary">Primary</button>
+    <button mat-button color="primary" [routerLink]="['/behavior-subject']">Example</button>
 
   </mat-card-actions>
 </mat-card>
@@ -56,15 +48,13 @@
   <mat-card-title>AsyncSubject</mat-card-title>
   <mat-card-content>
     <p>
-      AsyncSubject: An AsyncSubject behaves more like a subject and less like Behavior/Replay Subjects, i. e.
-      values emitted before subscriptions will not preserved. Even all emitted values after subscription will
-      not be preserved. The AsyncSubject is a Subject variant where only the last value of the Observable
-      execution is sent to its subscribers, and only when the execution completes
+      An AsyncSubject behaves more like a subject and less like Behavior/Replay Subjects, i. e.
+      values emitted before subscriptions will not preserved.
     </p>
   </mat-card-content>
   <mat-card-actions>
 
-    <button mat-button color="primary">Primary</button>
+    <button mat-button color="primary" [routerLink]="['/async-subject']">Example</button>
 
   </mat-card-actions>
 </mat-card>
