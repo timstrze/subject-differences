@@ -1,3 +1,34 @@
-<p>
-  Subject: A Subject observable is used to immediately notify subscribers of updated values emitted by it. It does not keep track of old values, i.e. if a Subject observable first emitted a value and was then later subscribed to, then the subscriber will not get get that value. You can think of a Subject like a live update / feed. Old values emitted from the time of its creation up to its subscription are not preserved; only values emitted after its subscription can be captured.
-</p>
+<mat-card class="subject-card">
+  <mat-card-title>Subject</mat-card-title>
+  <mat-card-content>
+    <p>
+      A Subject observable is used to immediately notify subscribers of updated values emitted by it. It does not
+      keep track of old values, i.e. if a Subject observable first emitted a value and was then later subscribed to,
+      then the subscriber will not get get that value. You can think of a Subject like a live update / feed.
+      Old values emitted from the time of its creation up to its subscription are not preserved; only values
+      emitted after its subscription can be captured.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+    <form class="subject-form">
+      <mat-form-field class="full-width-form">
+        <input matInput
+               type="number"
+               name="addNumber"
+               placeholder="Add a Number"
+               value="1"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="addToNumber">
+      </mat-form-field>
+    </form>
+
+    <p>observable$ {{observable$ | async}}</p>
+
+    <button mat-flat-button color="primary" (click)="addToObservable(addToNumber)">Primary</button>
+
+  </mat-card-actions>
+</mat-card>
+
+
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from 'rxjs';
+import {RandomNumberService} from '../services/random-number.service';
 
 @Component({
   selector: 'app-subject',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectComponent implements OnInit {
 
-  constructor() { }
+  observable$: Subject<any>;
 
-  ngOnInit() {
+  addToNumber: number;
+
+  constructor(public randomNumberService: RandomNumberService) {
   }
 
+  subscribeToNumber() {
+    this.observable$ = this.randomNumberService.getSubject();
+  }
+
+  ngOnInit(): void {
+    this.subscribeToNumber();
+  }
+
+  addToObservable(val: number) {
+    this.observable$.next(val);
+  }
 }
