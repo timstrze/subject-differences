@@ -12,15 +12,22 @@
 
     <form class="subject-form">
       <mat-form-field class="full-width-form">
-        <input matInput placeholder="Favorite food" value="Sushi">
-      </mat-form-field>
-
-      <mat-form-field class="full-width-form">
-        <textarea matInput placeholder="Leave a comment"></textarea>
+        <input matInput
+               type="number"
+               name="addNumber"
+               placeholder="Add a Number"
+               value="1"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="addToNumber">
       </mat-form-field>
     </form>
 
-    <button mat-flat-button color="primary">Primary</button>
+    <p>observable$ {{observable$ | async}}</p>
+
+<!--    <span *ngFor="let e of observable$ | async">{{e}}</span>-->
+
+    <button mat-flat-button color="primary" (click)="addToObservable(addToNumber)">Primary</button>
+
 
   </mat-card-actions>
 </mat-card>

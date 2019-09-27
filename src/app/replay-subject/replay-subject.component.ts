@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ReplaySubject} from 'rxjs';
+import {RandomNumberService} from '../services/random-number.service';
 
 @Component({
   selector: 'app-replay-subject',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReplaySubjectComponent implements OnInit {
 
-  constructor() { }
+  observable$: ReplaySubject<any>;
 
-  ngOnInit() {
+  addToNumber: number;
+
+  constructor(public randomNumberService: RandomNumberService) {
   }
 
+  subscribeToNumber() {
+    this.observable$ = this.randomNumberService.getReplaySubject();
+    this.observable$.subscribe(console.log);
+  }
+
+  ngOnInit(): void {
+    this.subscribeToNumber();
+  }
+
+  addToObservable(val: number) {
+    this.observable$.next(val);
+  }
 }
